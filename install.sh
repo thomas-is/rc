@@ -24,8 +24,8 @@ do
     fi
   fi
 
-  echo "ln -s $(pwd)/$RC ~/.$RC"
-  ln -s $(pwd)/$RC ~/.$RC
+  echo "cp $(pwd)/$RC ~/.$RC"
+  cp $(pwd)/$RC ~/.$RC
 
 done
 
