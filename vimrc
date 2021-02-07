@@ -57,3 +57,7 @@ vmap i I
 " visual append
 vmap a A
 
+" tab shortcuts
+nnoremap tt  :tabedit .<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
