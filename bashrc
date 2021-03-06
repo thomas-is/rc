@@ -93,7 +93,7 @@ alias ll='ls -hal --group-directories-first'
 #alias la='ls -A'
 #alias l='ls -CF'
 alias python='docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/src 0lfi/python python'
-alias php='docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/srr -e FPM="disabled" 0lfi/ng-php7 php'
+alias php='docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/srv -e FPM="disabled" 0lfi/ng-php7 php'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
