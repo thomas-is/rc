@@ -17,15 +17,15 @@ do
       fi
     fi
     if [ "$OVERWRITE" = "y" ] || [ "$OVERWRITE" = "a" ] ; then
-      echo "rm ~/.$RC"
-      rm ~/.$RC
+      echo "rm ~/$RC"
+      rm ~/$RC
     else
       continue
     fi
   fi
 
-  echo "cp $(pwd)/$RC ~/.$RC"
-  cp $(pwd)/$RC ~/.$RC
+  echo "cp $(pwd)/$RC ~/$RC"
+  cp $(pwd)/$RC ~/$RC
 
 done
 
