@@ -3,10 +3,10 @@
 # Yes/No/All
 OVERWRITE=""
 
-for RC in bashrc vimrc
+for RC in .bashrc .bash_aliases .vimrc
 do
 
-  if [ -f ~/.$RC ] ; then
+  if [ -f ~/$RC ] ; then
     if [ "$OVERWRITE" != "a" ] ; then
       printf "overwrite ~/.$RC ? [y]es [n]o [a]ll e[x]it "
       read -n 1 OVERWRITE
