@@ -3,7 +3,7 @@
 # Yes/No/All
 OVERWRITE=""
 
-for RC in .bashrc .bash_aliases .vimrc
+for RC in .bashrc .bash_aliases .vimrc .tmux.conf
 do
 
   if [ -f ~/$RC ] ; then
