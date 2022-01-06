@@ -9,9 +9,18 @@ set path+=**
 " Display all matching files when we tab complete"
 set wildmenu
 
+filetype plugin on
+
+"nnoremap <C-f> "xyiw:exe "grep --color -rn ".@x." ."<CR>
+"nnoremap <C-f> :exe '!grep --color --exclude-from=.gitignore -rn ' . shellescape(expand('<cfile>'), 1) . " . "
+"nnoremap <C-f> "xyiw:grep -rn --exclude=tags ".@x." ."
+
+command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude tags . -e <args>' | copen | execute 'silent /<args>'
+nnoremap <C-f> :Grep <c-r>=expand("<cword>")<cr><cr>
+
 " Create the `tags` file (may need to install ctags first)
 " sudo apt-get install universal-ctags
-"command! MakeTags !ctags -R .
+command! MakeTags !ctags -R .
 " NOW WE CAN:
 " - Use ^] to jump to tag under cursor
 " - Use g^] for ambiguous tags
@@ -32,7 +41,7 @@ set nu
 highlight ExtraWhitespace ctermbg=DarkBlue
 call matchadd('ExtraWhitespace', '\s\+$')
 " highlight 81th char
-highlight OverLength ctermbg=DarkRed
+highlight OverLength ctermbg=DarkRed ctermfg=White
 call matchadd('OverLength', '\%81v.')
 
 " show existing tab with 2 spaces width
