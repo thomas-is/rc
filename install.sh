@@ -3,12 +3,28 @@
 # Yes/No/All
 OVERWRITE=""
 
-for RC in .bashrc .bash_aliases .vimrc .tmux.conf
-do
+BASE=$( dirname $0 )
 
-  if [ -f ~/$RC ] ; then
+FILES="$(cat <<-EOF
+.bash_aliases
+.bashrc
+.tmux.conf
+.vimrc
+bin/color-chart
+bin/duckduckgo
+EOF
+)"
+
+mkdir -p ~/bin
+
+for FILE in $FILES
+do
+  echo
+  echo "~/$FILE"
+  if [ -f ~/$FILE ] ; then
     if [ "$OVERWRITE" != "a" ] ; then
-      printf "overwrite ~/.$RC ? [y]es [n]o [a]ll e[x]it "
+      diff --color ~/$FILE $BASE/$FILE
+      printf "overwrite? [y]es [n]o [a]ll e[x]it "
       read -n 1 OVERWRITE
       OVERWRITE=$( echo $OVERWRITE | tr '[:upper:]' '[:lower:]' )
       printf "\n"
@@ -16,17 +32,14 @@ do
         exit 1
       fi
     fi
-    if [ "$OVERWRITE" = "y" ] || [ "$OVERWRITE" = "a" ] ; then
-      echo "rm ~/$RC"
-      rm ~/$RC
-    else
+    if [ "$OVERWRITE" != "y" ] && [ "$OVERWRITE" = "a" ] ; then
       continue
     fi
   fi
-
-  echo "cp $(pwd)/$RC ~/$RC"
-  cp $(pwd)/$RC ~/$RC
-
+  echo "cp $BASE/$FILE ~/$FILE"
+  cp $BASE/$FILE ~/$FILE
 done
 
-wget "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh" -O ~/.git-prompt.sh
+echo
+echo "~/.git-prompt.sh"
+wget -q "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh" -O ~/.git-prompt.sh
