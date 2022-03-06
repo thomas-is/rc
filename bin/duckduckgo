@@ -1,0 +1,15 @@
+#!/bin/bash
+
+docker run --rm \
+  --name firefox \
+  --shm-size=2048m \
+  --device /dev/dri \
+  --device /dev/vga_arbiter \
+  -e HOME=/home/firefox \
+  -e DISPLAY=unix$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v $HOME/.Xauthority:/home/firefox/.Xauthority:ro \
+  -e PULSE_SERVER=unix:/pulse \
+  -v /run/user/$(id -u)/pulse/native:/pulse \
+  -v ~/downloads/web:/home/firefox/downloads\
+  0lfi/firefox
