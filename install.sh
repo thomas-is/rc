@@ -32,7 +32,7 @@ do
         exit 1
       fi
     fi
-    if [ "$OVERWRITE" != "y" ] && [ "$OVERWRITE" = "a" ] ; then
+    if [ "$OVERWRITE" = "n" ] ; then
       continue
     fi
   fi
