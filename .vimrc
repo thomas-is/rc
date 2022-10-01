@@ -45,13 +45,15 @@ highlight OverLength ctermbg=DarkRed ctermfg=White
 call matchadd('OverLength', '\%81v.')
 
 " show existing tab with 2 spaces width
-set softtabstop=0 tabstop=2
+set softtabstop=2
+set tabstop=2
 " when indenting with '>' or '<Tab>', use 2 spaces width
 set shiftwidth=2
 " always uses spaces instead of tab characters
 set expandtab
 " smartindent
-set smartindent
+"set smartindent
+set smarttab
 
 " keep selection on (un)indent with < and >
 vmap > >gv
