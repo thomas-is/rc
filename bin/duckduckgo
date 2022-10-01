@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p $HOME/tmp/duckduckgo/downloads
+
 docker run --rm \
   --name firefox \
   --shm-size=2048m \
@@ -11,5 +13,5 @@ docker run --rm \
   -v $HOME/.Xauthority:/home/firefox/.Xauthority:ro \
   -e PULSE_SERVER=unix:/pulse \
   -v /run/user/$(id -u)/pulse/native:/pulse \
-  -v ~/downloads/web:/home/firefox/downloads\
+  -v $HOME/tmp/duckduckgo:/home/firefox \
   0lfi/firefox
