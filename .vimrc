@@ -72,3 +72,6 @@ vmap a A
 nnoremap tt  :tabedit .<CR>
 nnoremap tj  :tabnext<CR>
 nnoremap tk  :tabprev<CR>
+
+" set markdown textwith to 80 (:gq to rewrap)
+au BufRead,BufNewFile *.md setlocal textwidth=80
