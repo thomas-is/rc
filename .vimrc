@@ -75,3 +75,38 @@ nnoremap tk  :tabprev<CR>
 
 " set markdown textwith to 80 (:gq to rewrap)
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Emoji shortcuts
+ab :ambulance: 🚑
+ab :blood: 🩸 
+ab :bomb: 💣
+ab :book: 📖
+ab :bug: 🐛
+ab :bulb: 💡
+ab :computer: 💻
+ab :construction: 🚧
+ab :elephant: 🐘
+ab :email: 📧
+ab :gear: ⚙️ 
+ab :info: 🛈
+ab :label: 🏷️
+ab :link: 🔗
+ab :memo: 📝
+ab :nut_and_bolt: 🔩
+ab :package: 📦
+ab :pencil: 📝
+ab :pill: 💊
+ab :point_right: 👉
+ab :pushpin: 📌
+ab :rocket: 🚀
+ab :shell: 🐚
+ab :snake: 🐍
+ab :telephone: 📞
+ab :test_tube: 🧪
+ab :vampire: 🧛
+ab :warning: ⚠
+ab :whale: 🐋
+ab :white_check_mark: ✅
+ab :wrench: 🔧
+ab :yarn: 🧶
+ab :ninja: 🥷
