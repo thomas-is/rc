@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ $# -ne 1 ] ; then
+  echo "Usage: $0 somemarkdown.md"
+  exit 1
+fi
+
+if [ ! -f "$1" ] ; then
+  echo "File not found"
+  exit 1
+fi
+
+TITLES=$( cat $1 | grep "^##" )
+
+IFS=$'\n'
+for TITLE in $TITLES
+do
+  unset IFS
+  TAB=$( echo $TITLE | sed 's/^##//g' | sed 's/#/  /g' | sed 's/^ */&:/g' | sed 's/ :.*$//g' )
+  VALUE=$( echo $TITLE | sed 's/^#* //g' )
+  ANCHOR="#$( echo $VALUE | tr ' ' '-' | tr '[:upper:]' '[:lower:]' )"
+  echo "$TAB- [$VALUE]($ANCHOR)"
+done
