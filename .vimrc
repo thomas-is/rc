@@ -105,6 +105,7 @@ ab :shell: 🐚
 ab :snake: 🐍
 ab :telephone: 📞
 ab :test_tube: 🧪
+ab :ticket: 🎫
 ab :up: 🆙
 ab :vampire: 🧛
 ab :warning: ⚠
