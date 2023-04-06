@@ -12,6 +12,7 @@ FILES="$(cat <<-EOF
 .vimrc
 bin/color-chart
 bin/duckduckgo
+bin/mdgentoc
 EOF
 )"
 
