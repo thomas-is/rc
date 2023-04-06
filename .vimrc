@@ -101,6 +101,7 @@ ab :pushpin: 📌
 ab :rocket: 🚀
 ab :shell: 🐚
 ab :snake: 🐍
+ab :tada: 🎉
 ab :telephone: 📞
 ab :test_tube: 🧪
 ab :vampire: 🧛
