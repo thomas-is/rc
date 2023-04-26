@@ -78,6 +78,7 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Emoji shortcuts
 ab :ambulance: 🚑
+ab :art: 🎨
 ab :blood: 🩸 
 ab :bomb: 💣
 ab :book: 📖
