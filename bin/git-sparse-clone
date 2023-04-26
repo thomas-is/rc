@@ -1,0 +1,53 @@
+#!/bin/sh
+
+usage() {
+  echo "Usage: $( basename $0 ) remote [local] [-b branch] -f /foo /bar"
+}
+
+if [ $# -eq 0 ]; then
+  usage
+  exit 1
+fi
+
+REMOTE=$1; shift
+LOCAL="$( echo $REMOTE | sed "s/.*\///g" | sed "s/\.git$//g" )"
+
+if [ $# -gt 0 ] && ! echo $1 | grep "^-" 1>/dev/null ; then
+  LOCAL=$1; shift
+fi
+
+while [ $# -gt 0 ]
+do
+  case $1 in
+    "-b" | "--branch" ) shift; BRANCH=$1 ;;
+    "-f" | "--files"  ) shift; FILES="$@"; break;;
+  esac
+  shift
+done
+
+if [ "$FILES" = "" ] ; then
+  usage
+  exit 1
+fi
+
+BRANCH="${BRANCH:-master}"
+
+echo "remote  $REMOTE" > /dev/stderr
+echo "local   $LOCAL"  > /dev/stderr
+echo "branch  $BRANCH" > /dev/stderr
+echo "files   $FILES"  > /dev/stderr
+
+mkdir -p $LOCAL
+cd $LOCAL
+
+git init
+git remote add -f origin "$REMOTE"
+
+git config core.sparseCheckout true
+
+for FILE in $FILES
+do
+  echo "$FILE" >> .git/info/sparse-checkout
+done
+
+git pull origin $BRANCH
