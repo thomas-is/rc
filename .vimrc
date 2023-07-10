@@ -89,7 +89,7 @@ ab :construction: 🚧
 ab :elephant: 🐘
 ab :email: 📧
 ab :gear: ⚙️ 
-ab :info: 🛈
+ab :info: ℹ️
 ab :label: 🏷️
 ab :link: 🔗
 ab :memo: 📝
@@ -108,10 +108,13 @@ ab :tada: 🎉
 ab :telephone: 📞
 ab :test_tube: 🧪
 ab :ticket: 🎫
+ab :troll: 🧌
 ab :up: 🆙
 ab :vampire: 🧛
-ab :warning: ⚠
+ab :warning: ⚠️
 ab :whale: 🐋
 ab :white_check_mark: ✅
 ab :wrench: 🔧
 ab :yarn: 🧶
+ab :zombie: 🧟
+
