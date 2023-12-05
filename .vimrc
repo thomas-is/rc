@@ -117,4 +117,4 @@ ab :white_check_mark: ✅
 ab :wrench: 🔧
 ab :yarn: 🧶
 ab :zombie: 🧟
-
+ab :fuck: 🖕
