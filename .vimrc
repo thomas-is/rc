@@ -100,6 +100,7 @@ ab :pencil: 📝
 ab :pill: 💊
 ab :point_right: 👉
 ab :pushpin: 📌
+ab :rabbit: 🐰
 ab :recycle: ♻️
 ab :rocket: 🚀
 ab :shell: 🐚
