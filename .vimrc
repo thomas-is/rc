@@ -44,16 +44,15 @@ call matchadd('ExtraWhitespace', '\s\+$')
 highlight OverLength ctermbg=DarkRed ctermfg=White
 call matchadd('OverLength', '\%81v.')
 
-" show existing tab with 2 spaces width
-set softtabstop=2
+
 set tabstop=2
-" when indenting with '>' or '<Tab>', use 2 spaces width
 set shiftwidth=2
-" always uses spaces instead of tab characters
+set softtabstop=2
 set expandtab
-" smartindent
-"set smartindent
+set smartindent
 set smarttab
+set autoindent
+retab
 
 " keep selection on (un)indent with < and >
 vmap > >gv
@@ -75,6 +74,192 @@ nnoremap tk  :tabprev<CR>
 
 " set markdown textwith to 80 (:gq to rewrap)
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+
+
+
+" uft8 symbols
+ab :forall: ∀
+ab :exist: ∃
+ab :exists: ∃
+ab :notexist: ∄
+ab :notexists: ∄
+ab :in: ∈
+ab :notin: ∉
+ab :not: ¬
+ab :true: ⊤
+ab :false: ⟂
+ab :empty: ∅
+ab :infty: ∞
+ab :infinity: ∞
+ab :land: ∧
+ab :lor: ∨
+ab :N: ℕ
+ab :Z: ℤ
+ab :Q: ℚ
+ab :F: 𝔽
+ab :R: ℝ
+ab :C: ℂ
+ab :K: 𝕂
+ab :U: 𝕌
+ab :inter: ⋂
+ab :union: ⋃
+ab :cap: ⋂
+ab :cup: ⋃
+ab :to: →
+ab :mapsto: ↦
+ab :impliedby: ⇐
+ab :implies: ⇒
+ab :imply: ⇒
+ab :iff: ⇔
+ab :sum: Σ
+ab :prod: ∏
+ab :int: ∫
+ab :times: ×
+ab :pm: ±
+ab :mod: ≡
+ab :equiv: ≡
+ab :neq: ≠
+ab :simeq: ≈
+ab :approx: ≈
+ab :lte: ≤
+ab :gte: ≥
+ab :sqrt: √
+ab :3root: ∛
+ab :4root: ∜
+ab :partial: ∂
+ab :dot: ⋅
+"∘ ⋆ ⟡ ⋄
+ab :[: ⟦
+ab :]: ⟧
+ab :(: ⟨
+ab :): ⟩
+ab :ceil[: ⌈
+ab :ceil]: ⌉
+ab :floor[: ⌊
+ab :floor]: ⌋
+"ab :|: ⋮
+"ab :-: ⋯
+"ab :/: ⋰
+"ab :\: ⋱
+ab :cqfd: ∎
+ab :^0: ⁰
+ab :^1: ¹
+ab :^2: ²
+ab :^3: ³
+ab :^4: ⁴
+ab :^5: ⁵
+ab :^6: ⁶
+ab :^7: ⁷
+ab :^8: ⁸
+ab :^9: ⁹
+ab :^+: ⁺
+ab :^-: ⁻
+ab :^=: ⁼
+ab :^(: ⁽
+ab :^): ⁾
+ab :^n: ⁿ
+ab :^i: ⁱ
+ab :_0: ₀
+ab :_1: ₁
+ab :_2: ₂
+ab :_3: ₃
+ab :_4: ₄
+ab :_5: ₅
+ab :_6: ₆
+ab :_7: ₇
+ab :_8: ₈
+ab :_9: ₉
+ab :_+: ₊
+ab :_-: ₋
+ab :_=: ₌
+ab :_(: ₍
+ab :_): ₎
+ab :_n: ₙ
+ab :_i: ᵢ
+ab :_a: ₐ
+ab :_e: ₑ
+ab :_h: ₕ
+ab :_j: ⱼ
+ab :_k: ₖ
+ab :_l: ₗ
+ab :_m: ₘ
+ab :_o: ₒ
+ab :_p: ₚ
+ab :_r: ᵣ
+ab :_s: ₛ
+ab :_t: ₜ
+ab :_u: ᵤ
+ab :_v: ᵥ
+ab :_x: ₓ
+ab :i: 𝒾
+ab :j: 𝒿
+ab :e: ℯ
+ab :l: ℓ
+"ℜ ℑ ℵ Ϝ ϝ
+"⊕ ⊖ ⊗ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝
+"Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω
+ab :Alpha:      Α
+ab :Beta:       Β
+ab :Gamma:      Γ
+ab :Delta:      Δ
+ab :Epsilon:    Ε
+ab :Zeta:       Ζ
+ab :Eta:        Η
+ab :Theta:      Θ
+ab :Iota:       Ι
+ab :Kappa:      Κ
+ab :Lambda:     Λ
+ab :Mu:         Μ
+ab :Nu:         Ν
+ab :Ksi:        Ξ
+ab :Xi:         Ξ
+ab :Omicron:    Ο
+ab :Pi:         Π
+ab :Ro:         Ρ
+ab :Sigma:      Σ
+ab :Tau:        Τ
+ab :Upsilon:    Υ
+ab :Phi:        Φ
+ab :Khi:        Χ
+ab :Chi:        Χ
+ab :Psi:        Ψ
+ab :Omega:      Ω
+
+ab :alpha:      α
+ab :beta:       β
+ab :gamma:      γ
+ab :delta:      δ
+ab :epsilon:    ε
+ab :zeta:       ζ
+ab :eta:        η
+ab :theta:      θ
+ab :iota:       ι
+ab :kappa:      κ
+ab :lambda:     λ
+ab :mu:         μ
+ab :nu:         ν
+ab :ksi:        ξ
+ab :xi:         ξ
+ab :omicron:    ο
+ab :pi:         π
+ab :ro:         ρ
+ab :sigma:      σ
+ab :tau:        τ
+ab :upsilon:    υ
+ab :phi:        φ
+ab :phi':       ϕ
+ab :khi:        χ
+ab :chi:        χ
+ab :psi:        ψ
+ab :omega:      ω
+
+ab :necessity: □
+ab :possible: ◇
+
+
+
+
 
 " Emoji shortcuts
 ab :ambulance: 🚑
