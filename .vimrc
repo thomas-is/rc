@@ -10,6 +10,7 @@ set path+=**
 set wildmenu
 
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 "nnoremap <C-f> "xyiw:exe "grep --color -rn ".@x." ."<CR>
 "nnoremap <C-f> :exe '!grep --color --exclude-from=.gitignore -rn ' . shellescape(expand('<cfile>'), 1) . " . "
@@ -54,6 +55,9 @@ set smarttab
 set autoindent
 retab
 
+set list
+set listchars=tab:>\|
+
 " keep selection on (un)indent with < and >
 vmap > >gv
 vmap < <gv
@@ -76,8 +80,6 @@ nnoremap tk  :tabprev<CR>
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 
-
-
 " uft8 symbols
 ab :forall: ∀
 ab :exist: ∃
@@ -92,8 +94,8 @@ ab :false: ⟂
 ab :empty: ∅
 ab :infty: ∞
 ab :infinity: ∞
-ab :land: ∧
-ab :lor: ∨
+ab :and: ∧
+ab :or: ∨
 ab :N: ℕ
 ab :Z: ℤ
 ab :Q: ℚ
@@ -106,9 +108,18 @@ ab :inter: ⋂
 ab :union: ⋃
 ab :cap: ⋂
 ab :cup: ⋃
+ab :subset: ⊂
+ab :superset: ⊃
 ab :to: →
+ab :from: ←
+ab :larr: ←
+ab :rarr: →
+ab :uarr: ↑
+ab :darr: ↓
+ab :harr: ↔
 ab :mapsto: ↦
 ab :impliedby: ⇐
+ab :implied: ⇐
 ab :implies: ⇒
 ab :imply: ⇒
 ab :iff: ⇔
@@ -255,10 +266,11 @@ ab :psi:        ψ
 ab :omega:      ω
 
 ab :necessity: □
+ab :necessary: □
 ab :possible: ◇
 
-
-
+ab :flat: ♭
+ab :sharp: ♯
 
 
 " Emoji shortcuts
@@ -305,6 +317,7 @@ ab :yarn: 🧶
 ab :zombie: 🧟
 ab :fuck: 🖕
 ab :mage: 🧙
+ab :wizard: 🧙
 
 ab :hash: #️⃣
 ab :keycap_star: *️⃣
@@ -870,7 +883,6 @@ ab :cow2: 🐄
 ab :tiger2: 🐅
 ab :leopard: 🐆
 ab :rabbit2: 🐇
-ab :black_cat: 🐈‍⬛
 ab :cat2: 🐈
 ab :dragon: 🐉
 ab :crocodile: 🐊
@@ -884,7 +896,6 @@ ab :sheep: 🐑
 ab :monkey: 🐒
 ab :rooster: 🐓
 ab :chicken: 🐔
-ab :service_dog: 🐕‍🦺
 ab :dog2: 🐕
 ab :pig2: 🐖
 ab :boar: 🐗
@@ -902,7 +913,6 @@ ab :turtle: 🐢
 ab :hatching_chick: 🐣
 ab :baby_chick: 🐤
 ab :hatched_chick: 🐥
-ab :black_bird: 🐦‍⬛
 ab :bird: 🐦
 ab :penguin: 🐧
 ab :koala: 🐨
@@ -924,14 +934,12 @@ ab :pig: 🐷
 ab :frog: 🐸
 ab :hamster: 🐹
 ab :wolf: 🐺
-ab :polar_bear: 🐻‍❄️
 ab :bear: 🐻
 ab :panda_face: 🐼
 ab :pig_nose: 🐽
 ab :feet: 🐾
 ab :chipmunk: 🐿️
 ab :eyes: 👀
-ab :eye-in-speech-bubble: 👁️‍🗨️
 ab :eye: 👁️
 ab :ear: 👂
 ab :nose: 👃
@@ -971,54 +979,16 @@ ab :bust_in_silhouette: 👤
 ab :busts_in_silhouette: 👥
 ab :boy: 👦
 ab :girl: 👧
-ab :male-farmer: 👨‍🌾
-ab :male-cook: 👨‍🍳
-ab :male-student: 👨‍🎓
-ab :male-singer: 👨‍🎤
-ab :male-artist: 👨‍🎨
-ab :male-teacher: 👨‍🏫
-ab :male-factory-worker: 👨‍🏭
-ab :male-technologist: 👨‍💻
-ab :male-office-worker: 👨‍💼
-ab :male-mechanic: 👨‍🔧
-ab :male-scientist: 👨‍🔬
-ab :male-astronaut: 👨‍🚀
-ab :male-firefighter: 👨‍🚒
-ab :male-doctor: 👨‍⚕️
-ab :male-judge: 👨‍⚖️
-ab :male-pilot: 👨‍✈️
 ab :man: 👨
-ab :female-farmer: 👩‍🌾
-ab :female-cook: 👩‍🍳
-ab :female-student: 👩‍🎓
-ab :female-singer: 👩‍🎤
-ab :female-artist: 👩‍🎨
-ab :female-teacher: 👩‍🏫
-ab :female-factory-worker: 👩‍🏭
-ab :female-technologist: 👩‍💻
-ab :female-office-worker: 👩‍💼
-ab :female-mechanic: 👩‍🔧
-ab :female-scientist: 👩‍🔬
-ab :female-astronaut: 👩‍🚀
-ab :female-firefighter: 👩‍🚒
-ab :female-doctor: 👩‍⚕️
-ab :female-judge: 👩‍⚖️
-ab :female-pilot: 👩‍✈️
 ab :woman: 👩
 ab :family: 👪
 ab :two_men_holding_hands: 👬
 ab :two_women_holding_hands: 👭
-ab :female-police-officer: 👮‍♀️
-ab :male-police-officer: 👮‍♂️
 ab :cop: 👮
-ab :women-with-bunny-ears-partying: 👯‍♀️
-ab :men-with-bunny-ears-partying: 👯‍♂️
 ab :dancers: 👯
 ab :bride_with_veil: 👰
 ab :person_with_blond_hair: 👱
 ab :baby: 👶
-ab :female-construction-worker: 👷‍♀️
-ab :male-construction-worker: 👷‍♂️
 ab :construction_worker: 👷
 ab :princess: 👸
 ab :japanese_ogre: 👹
@@ -1030,8 +1000,6 @@ ab :space_invader: 👾
 ab :imp: 👿
 ab :skull: 💀
 ab :information_desk_person: 💁
-ab :female-guard: 💂‍♀️
-ab :male-guard: 💂‍♂️
 ab :guardsman: 💂
 ab :dancer: 💃
 ab :lipstick: 💄
@@ -1252,9 +1220,7 @@ ab :clock1230: 🕧
 ab :candle: 🕯️
 ab :mantelpiece_clock: 🕰️
 ab :hole: 🕳️
-ab :female-detective: 🕵️‍♀️
-ab :male-detective: 🕵️‍♂️
-ab :sleuth_or_spy: 🕵️
+ab :detective: 🕵️
 ab :dark_sunglasses: 🕶️
 ab :spider: 🕷️
 ab :spider_web: 🕸️
@@ -1339,7 +1305,6 @@ ab :sleepy: 😪
 ab :tired_face: 😫
 ab :grimacing: 😬
 ab :sob: 😭
-ab :face_exhaling: 😮‍💨
 ab :open_mouth: 😮
 ab :hushed: 😯
 ab :cold_sweat: 😰
@@ -1347,9 +1312,7 @@ ab :scream: 😱
 ab :astonished: 😲
 ab :flushed: 😳
 ab :sleeping: 😴
-ab :face_with_spiral_eyes: 😵‍💫
 ab :dizzy_face: 😵
-ab :face_in_clouds: 😶‍🌫️
 ab :no_mouth: 😶
 ab :mask: 😷
 ab :smile_cat: 😸
@@ -1658,11 +1621,7 @@ ab :bone: 🦴
 ab :leg: 🦵
 ab :foot: 🦶
 ab :tooth: 🦷
-ab :female_superhero: 🦸‍♀️
-ab :male_superhero: 🦸‍♂️
 ab :superhero: 🦸
-ab :female_supervillain: 🦹‍♀️
-ab :male_supervillain: 🦹‍♂️
 ab :supervillain: 🦹
 ab :safety_vest: 🦺
 ab :ear_with_hearing_aid: 🦻
@@ -1687,32 +1646,6 @@ ab :standing_person: 🧍
 ab :kneeling_person: 🧎
 ab :deaf_person: 🧏
 ab :face_with_monocle: 🧐
-ab :farmer: 🧑‍🌾
-ab :cook: 🧑‍🍳
-ab :person_feeding_baby: 🧑‍🍼
-ab :mx_claus: 🧑‍🎄
-ab :student: 🧑‍🎓
-ab :singer: 🧑‍🎤
-ab :artist: 🧑‍🎨
-ab :teacher: 🧑‍🏫
-ab :factory_worker: 🧑‍🏭
-ab :technologist: 🧑‍💻
-ab :office_worker: 🧑‍💼
-ab :mechanic: 🧑‍🔧
-ab :scientist: 🧑‍🔬
-ab :astronaut: 🧑‍🚀
-ab :firefighter: 🧑‍🚒
-ab :people_holding_hands: 🧑‍🤝‍🧑
-ab :person_with_probing_cane: 🧑‍🦯
-ab :red_haired_person: 🧑‍🦰
-ab :curly_haired_person: 🧑‍🦱
-ab :bald_person: 🧑‍🦲
-ab :white_haired_person: 🧑‍🦳
-ab :person_in_motorized_wheelchair: 🧑‍🦼
-ab :person_in_manual_wheelchair: 🧑‍🦽
-ab :health_worker: 🧑‍⚕️
-ab :judge: 🧑‍⚖️
-ab :pilot: 🧑‍✈️
 ab :adult: 🧑
 ab :child: 🧒
 ab :older_adult: 🧓
@@ -1721,26 +1654,12 @@ ab :person_with_headscarf: 🧕
 ab :person_in_steamy_room: 🧖
 ab :person_climbing: 🧗
 ab :person_in_lotus_position: 🧘
-ab :female_mage: 🧙‍♀️
-ab :male_mage: 🧙‍♂️
 ab :mage: 🧙
-ab :female_fairy: 🧚‍♀️
-ab :male_fairy: 🧚‍♂️
 ab :fairy: 🧚
-ab :female_vampire: 🧛‍♀️
-ab :male_vampire: 🧛‍♂️
 ab :vampire: 🧛
-ab :mermaid: 🧜‍♀️
-ab :merman: 🧜‍♂️
 ab :merperson: 🧜
-ab :female_elf: 🧝‍♀️
-ab :male_elf: 🧝‍♂️
 ab :elf: 🧝
-ab :female_genie: 🧞‍♀️
-ab :male_genie: 🧞‍♂️
 ab :genie: 🧞
-ab :female_zombie: 🧟‍♀️
-ab :male_zombie: 🧟‍♂️
 ab :zombie: 🧟
 ab :brain: 🧠
 ab :orange_heart: 🧡
@@ -2028,8 +1947,6 @@ ab :grey_question: ❔
 ab :grey_exclamation: ❕
 ab :exclamation: ❗
 ab :heavy_heart_exclamation_mark_ornament: ❣️
-ab :heart_on_fire: ❤️‍🔥
-ab :mending_heart: ❤️‍🩹
 ab :heart: ❤️
 ab :heavy_plus_sign: ➕
 ab :heavy_minus_sign: ➖
@@ -2050,3 +1967,5 @@ ab :wavy_dash: 〰️
 ab :part_alternation_mark: 〽️
 ab :congratulations: ㊗️
 ab :secret: ㊙️
+
+iab ife if err != nil {<CR><tab>return err<CR>}<CR>
